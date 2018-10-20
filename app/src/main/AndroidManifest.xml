@@ -3,6 +3,7 @@
     package="com.example.theodorethayib.hackisu18f">
 
     <application
+        android:name=".Globals"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,6 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".play1Activity" />
+        <activity android:name=".play2Activity" />
+        <activity android:name=".play3Activity"></activity>
     </application>
 
 </manifest>

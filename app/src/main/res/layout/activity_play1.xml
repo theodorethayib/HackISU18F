@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    tools:background="#222"
+    tools:context=".play1Activity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:background="#222"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="25dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="25dp"
+            android:background="#222"
+            android:orientation="horizontal">
+            <!--tools:layout_editor_absoluteX="25dp"-->
+            <!--tools:layout_editor_absoluteY="519dp">-->
+
+
+            <EditText
+                android:id="@+id/playerNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="What is your name?"
+                android:inputType="textPersonName"
+                android:textColor="#888"
+                android:textColorHint="#888"
+                android:textColorLink="#888" />
+
+            <Button
+                android:id="@+id/submitButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/roundedbuttons"
+                android:onClick="launchPlay2Activity"
+                android:text="Submit" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
