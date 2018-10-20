@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:background="#222"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello there!! Please tell me how to code!"
+        android:textColor="#EEE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -17,15 +19,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
 
-        >
+        android:layout_height="match_parent"
+        tools:background="#222">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/tempButton"
@@ -33,12 +35,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Temp" />
+
             <Button
                 android:id="@+id/playButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Play" />
+                android:text="Play"
+                android:onClick="launchPlay1Activity"/>
+
             <Button
                 android:id="@+id/settingsButton"
                 android:layout_width="wrap_content"
