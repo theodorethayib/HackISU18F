@@ -13,14 +13,6 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="0dp">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Settings"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
         <CheckBox
             android:id="@+id/checkBox"
             android:layout_width="match_parent"
