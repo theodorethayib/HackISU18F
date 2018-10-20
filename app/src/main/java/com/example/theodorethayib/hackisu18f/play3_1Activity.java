@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -13,16 +14,23 @@ public class play3_1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_play3_1);
 
 
     }
 
+    public void yesButton(View view) {
+        Intent intent = new Intent(this, play4Activity.class);
+        startActivity(intent);
+    }
+
     public void noButton(View view) {
         Globals g = (Globals)getApplication();
         Random rand = new Random();
-        int randomNum2 = rand.nextInt(2);
-        if (randomNum2 == 1) {
+        int randomNum2 = rand.nextInt(100);
+        if (randomNum2 == 33) {
             Intent intent = new Intent(this, play3_2Activity.class);
             startActivity(intent);
         }

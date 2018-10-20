@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,8 @@ public class play1Activity extends AppCompatActivity {
 
     public void launchPlay2Activity(View view) {
         Random rand = new Random();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Intent intent = new Intent(this, play2Activity.class);
         Globals g = (Globals)getApplication();
         EditText playerNameET = (EditText) findViewById(R.id.playerNameTextView);

@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -17,6 +18,8 @@ public class play3Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_play3);
 
         Button button1 = findViewById(R.id.button1);
@@ -57,6 +60,11 @@ public class play3Activity extends AppCompatActivity {
 
     public void launchPlay3_1Activity(View view) {
         Intent intent = new Intent(this, play3_1Activity.class);
+        startActivity(intent);
+    }
+
+    public void yesButton(View view) {
+        Intent intent = new Intent(this, play4Activity.class);
         startActivity(intent);
     }
 }

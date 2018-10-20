@@ -4,76 +4,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#222"
-    tools:context=".play3Activity">
+    tools:context=".play4Activity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:background="#222"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="25dp">
 
         <LinearLayout
-            android:id="@+id/layout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:orientation="vertical"
-            android:layout_centerVertical="true">
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/welcome1"
+                android:id="@+id/info1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Ok, Let's start easy..."
                 android:layout_gravity="center_vertical"
-                android:text="Welcome to the game!"
                 android:textAlignment="center"
                 android:textColor="#888"
-                android:textSize="38sp" />
+                android:textSize="36sp" />
 
             <TextView
-                android:id="@+id/welcome2"
+                android:id="@+id/info2"
+                android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
+                android:text="How many letters is in your name?"
                 android:textAlignment="center"
                 android:textColor="#888"
                 android:textSize="36sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="50dp"
+                android:layout_margin="25dp"
+                android:background="#222"
                 android:orientation="horizontal">
+                <!--tools:layout_editor_absoluteX="25dp"-->
+                <!--tools:layout_editor_absoluteY="519dp">-->
 
-                <Button
-                    android:id="@+id/button1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="100dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/roundedbuttons"
-                    android:onClick="yesButton"
-                    android:text="Yes"
-                    android:visibility="visible" />
 
-                <Button
-                    android:id="@+id/button2"
+                <EditText
+                    android:id="@+id/nameLengthInput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:textColor="#888"
+                    android:textColorHint="#888" />
+
+                <Button
+                    android:id="@+id/submitButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:background="@drawable/roundedbuttons"
-                    android:onClick="launchPlay3_1Activity"
-                    android:text="No" />
+
+                    android:onClick="submitButton"
+                    android:text="Submit" />
+
             </LinearLayout>
         </LinearLayout>
 
     </RelativeLayout>
-
 
 </android.support.constraint.ConstraintLayout>

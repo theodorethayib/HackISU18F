@@ -3,7 +3,9 @@ package com.example.theodorethayib.hackisu18f;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.CheckBox;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class settingsActivity extends AppCompatActivity {
@@ -11,6 +13,8 @@ public class settingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_settings);
     }
 
@@ -25,6 +29,18 @@ public class settingsActivity extends AppCompatActivity {
         else{
             catText.setText("While not well known, the collective nouns used for cats and kittens are a clowder of cats and a kindle of kittens.");
             checked = true;
+        }
+
+
+    }
+    protected void colorSeperation(View view){
+        Globals g = (Globals)getApplication();
+        Switch colorSwitch = (Switch) findViewById(R.id.colorSwitch);
+        if(colorSwitch.isChecked()){
+            g.setColorSwitch(true);
+        }
+        else{
+            g.setColorSwitch(false);
         }
 
 

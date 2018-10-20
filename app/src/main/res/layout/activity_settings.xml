@@ -11,8 +11,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <Switch
+            android:id="@+id/colorSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Color Seperation" />
+
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/checkBox2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Subscribe to CatFacts!" />
