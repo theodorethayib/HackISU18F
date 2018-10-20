@@ -21,7 +21,10 @@
         <activity android:name=".play2Activity" />
         <activity android:name=".play3Activity" />
         <activity android:name=".play3_1Activity" />
-        <activity android:name=".settingsActivity"></activity>
+        <activity android:name=".settingsActivity" />
+        <activity android:name=".play3_2Activity" />
+        <activity android:name=".snakeGameActivity">
+        </activity>
     </application>
 
 </manifest>

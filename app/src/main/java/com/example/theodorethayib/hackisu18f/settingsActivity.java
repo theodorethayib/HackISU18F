@@ -15,7 +15,8 @@ public class settingsActivity extends AppCompatActivity {
     }
 
     protected void catFacts(View view){
-        TextView catText = null;
+        TextView catText = findViewById(R.id.catText);
+
 //        boolean checked = (findViewById(R.id.checkBox) view).isChecked();
         boolean checked = ((CheckBox) view).isChecked();
         if(checked == true){

@@ -7,8 +7,11 @@
     tools:context=".play3_1Activity">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="368dp"
+        android:layout_height="551dp"
+        android:background="#222"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
         <LinearLayout
             android:id="@+id/layout1"
@@ -19,11 +22,11 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/welcome1"
+                android:id="@+id/welcome3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="Welcome to the game!"
+                android:text="Wrong answer. Please try again!"
                 android:textAlignment="center"
                 android:textColor="#888"
                 android:textSize="38sp" />
@@ -55,6 +58,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:background="@drawable/roundedbuttons"
+                    android:onClick="noButton"
                     android:text="No" />
             </LinearLayout>
         </LinearLayout>

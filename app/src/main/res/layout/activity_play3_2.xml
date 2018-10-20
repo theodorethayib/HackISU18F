@@ -4,27 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#222"
-    tools:context=".play3Activity">
+    tools:context=".play3_2Activity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#222">
 
         <LinearLayout
             android:id="@+id/layout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
-            android:orientation="vertical"
-            android:layout_centerVertical="true">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/welcome1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="Welcome to the game!"
+                android:text="Fine..."
                 android:textAlignment="center"
                 android:textColor="#888"
                 android:textSize="38sp" />
@@ -40,9 +40,20 @@
                 android:textColor="#888"
                 android:textSize="36sp" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/welcome3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"
+                android:textColor="#888"
+                android:textSize="36sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="10dp"
@@ -57,6 +68,7 @@
                     android:layout_marginRight="100dp"
                     android:layout_weight="1"
                     android:background="@drawable/roundedbuttons"
+                    android:onClick="launchSettingsActivity"
                     android:text="Yes"
                     android:visibility="visible" />
 
@@ -70,9 +82,8 @@
                     android:onClick="launchPlay3_1Activity"
                     android:text="No" />
             </LinearLayout>
+
         </LinearLayout>
 
     </RelativeLayout>
-
-
 </android.support.constraint.ConstraintLayout>
