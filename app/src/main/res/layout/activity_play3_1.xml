@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#222"
-    tools:context=".play3Activity">
+    tools:context=".play3_1Activity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,9 +14,9 @@
             android:id="@+id/layout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
-            android:orientation="vertical"
-            android:layout_centerVertical="true">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/welcome1"
@@ -28,17 +27,6 @@
                 android:textAlignment="center"
                 android:textColor="#888"
                 android:textSize="38sp" />
-
-            <TextView
-                android:id="@+id/welcome2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
-                android:textAlignment="center"
-                android:textColor="#888"
-                android:textSize="36sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -72,6 +60,4 @@
         </LinearLayout>
 
     </RelativeLayout>
-
-
 </android.support.constraint.ConstraintLayout>
