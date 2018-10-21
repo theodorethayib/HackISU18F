@@ -68,7 +68,7 @@ public class snakeGameActivity extends AppCompatActivity {
         private int bColor;
 
 
-        private Direction m_Direction = Direction.RIGHT;
+        private Direction m_Direction;
 
         private int m_Score;
 
@@ -143,6 +143,14 @@ public class snakeGameActivity extends AppCompatActivity {
             m_SnakeLength = 1;
             m_SnakeXs[0] = NUM_BLOCKS_WIDE / 2;
             m_SnakeYs[0] = m_NumBlocksHigh / 2;
+
+            Random rand = new Random();
+            switch (rand.nextInt(4)) {
+                case 0: m_Direction = Direction.UP; break;
+                case 1: m_Direction = Direction.DOWN; break;
+                case 2: m_Direction = Direction.LEFT; break;
+                case 3: m_Direction = Direction.RIGHT; break;
+            }
 
             rColor = 100;
             gColor = 100;

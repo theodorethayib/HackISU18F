@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
@@ -15,20 +14,12 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 
 import java.util.Arrays;
 import java.util.Random;
 
 public class arrowGameActivity extends AppCompatActivity {
     ArrowView arrowView;
-
-
-
-
-    public int arrowDirInt = -1;
-    public enum Direction {UP, RIGHT, DOWN, LEFT};
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +35,8 @@ public class arrowGameActivity extends AppCompatActivity {
 
         arrowView = new ArrowView(this, size);
 
-
-
         setContentView(arrowView);
     }
-
 
     @Override
     protected void onResume() {
@@ -61,7 +49,6 @@ public class arrowGameActivity extends AppCompatActivity {
         super.onPause();
         arrowView.pause();
     }
-
 
     class ArrowView extends SurfaceView implements Runnable {
         private Thread m_Thread = null;
@@ -89,10 +76,6 @@ public class arrowGameActivity extends AppCompatActivity {
         private Paint m_PaintXYellow;
 
         private int colorDifficultyInt;
-//        private Context m_context;
-
-
-//        private Direction m_Direction = Direction.RIGHT;
 
         private long m_NextFrameTime;
         private final long FPS = 20000;
@@ -102,6 +85,8 @@ public class arrowGameActivity extends AppCompatActivity {
 
         private int m_ScreenWidth;
         private int m_ScreenHeight;
+
+        private int xTextPos;
 
 
         private int m_BlockSize;
@@ -118,7 +103,6 @@ public class arrowGameActivity extends AppCompatActivity {
 
 
         private final int NUM_BLOCKS_WIDE = 9;
-//        private int m_NumBlocksHigh = 1;
 
         public ArrowView(Context context, Point size) {
             super(context);
@@ -176,7 +160,6 @@ public class arrowGameActivity extends AppCompatActivity {
         }
 
         public void startGame() {
-//            drawButtons();
             m_Length = 10;
             change = 750;
             m_Arrows = new int[m_Length * 2 - 1];
@@ -186,6 +169,8 @@ public class arrowGameActivity extends AppCompatActivity {
             stageCount = 1;
             selectedColor = -1;
             livesLeft = 3;
+
+            xTextPos = 625;
 
             if (hardMode) {colorDifficultyInt = 8;}
             else {colorDifficultyInt = 4;}
@@ -198,7 +183,6 @@ public class arrowGameActivity extends AppCompatActivity {
         }
 
         public boolean detectWrongArrow () {
-//        if (m_Arrows[9] != selectedColor && count >= 10) {
         if (m_Arrows[9] == 99 || m_Arrows[9] == -1) {
             return false;
         }else if (m_Arrows[9] != selectedColor && count > 9) {
@@ -241,8 +225,10 @@ public class arrowGameActivity extends AppCompatActivity {
             change *= .9;
             m_Arrows = new int[m_Length * 2 - 1];
             count = 0;
+            selectedColor = -1;
             Arrays.fill(m_Arrows, -1);
             stageCount++;
+            if (stageCount >= 10) {xTextPos = 675;}
             if (stageCount % 3 == 1) {
                 livesLeft++;
             }
@@ -256,16 +242,11 @@ public class arrowGameActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-//        public boolean isGameOver() {
-//            return gameOver;
-//        }
-
         public void drawGame() {
             if (m_Holder.getSurface().isValid()) {
                 m_Canvas = m_Holder.lockCanvas();
 
                 m_Canvas.drawColor(Color.argb(255, 68, 68, 68));
-
 
                 m_PaintBG.setColor(Color.argb(255, 68, 68, 68));
                 m_Paint.setColor(Color.argb(255, 160, 200, 200));
@@ -294,16 +275,18 @@ public class arrowGameActivity extends AppCompatActivity {
                 m_PaintXGreen.setTextSize(200);
                 m_PaintXYellow.setTextSize(200);
 
-
-                if (hardMode) {m_Canvas.drawText("STAGE:" + stageCount, (m_ScreenWidth / 2) - 600, 400, m_PaintX);
+                //STAGE AND LIVES LEFT
+                if (hardMode) {m_Canvas.drawText("STAGE:" + stageCount, (m_ScreenWidth / 2) - xTextPos, 400, m_PaintX);
 
                 }else {m_Canvas.drawText("STAGE:" + stageCount, (m_ScreenWidth / 2) - 600, 400, m_Paint);}
                 switch(livesLeft) {
-                    case 3: m_Canvas.drawText("LIVES LEFT:" + livesLeft, (m_ScreenWidth / 2) - 600, 900, m_PaintXGreen); break;
-                    case 2: m_Canvas.drawText("LIVES LEFT:" + livesLeft, (m_ScreenWidth / 2) - 600, 900, m_PaintXYellow); break;
-                    case 1: m_Canvas.drawText("LIVES LEFT:" + livesLeft, (m_ScreenWidth / 2) - 600, 900, m_PaintXRed); break;
-                    default: m_Canvas.drawText("LIVES LEFT:" + livesLeft, (m_ScreenWidth / 2) - 600, 900, m_PaintXBlue); break;
+                    case 3: m_Canvas.drawText("LIVES LEFT: " + livesLeft, (m_ScreenWidth / 2) - 620, 900, m_PaintXGreen); break;
+                    case 2: m_Canvas.drawText("LIVES LEFT: " + livesLeft, (m_ScreenWidth / 2) - 620, 900, m_PaintXYellow); break;
+                    case 1: m_Canvas.drawText("LIVES LEFT: " + livesLeft, (m_ScreenWidth / 2) - 620, 900, m_PaintXRed); break;
+                    default: m_Canvas.drawText("LIVES LEFT: " + livesLeft, (m_ScreenWidth / 2) - 620, 900, m_PaintXBlue); break;
                 }
+
+                //TESTING
 //                m_Canvas.drawText("COLOR:" + selectedColor, (m_ScreenWidth / 2) - 400, 1000, m_Paint);
 //                m_Canvas.drawText("Tst:" + m_Arrows[9], (m_ScreenWidth / 2) - 400, 1500, m_Paint);
 //                m_Canvas.drawText("Tst2:" + detectWrongArrow(), (m_ScreenWidth / 2) - 400, 2000, m_Paint);
