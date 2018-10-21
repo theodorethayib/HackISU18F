@@ -228,15 +228,8 @@ public class snakeGameActivity extends AppCompatActivity {
 
         public void gameOver() {
             m_Playing = false;
-            clearScreen();
             Intent intent = new Intent(getContext(), snakeGameOverActivity.class);
             startActivity(intent);
-        }
-
-        private void clearScreen() {
-            m_Canvas = m_Holder.lockCanvas();
-            m_Canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-            m_Holder.unlockCanvasAndPost(m_Canvas);
         }
 
         public void drawGame() {

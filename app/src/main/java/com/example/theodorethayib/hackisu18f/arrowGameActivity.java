@@ -246,21 +246,14 @@ public class arrowGameActivity extends AppCompatActivity {
             if (stageCount % 3 == 1) {
                 livesLeft++;
             }
-            if (stageCount >= 5) {hardMode = true; colorDifficultyInt = 8; change = 700; m_Length = 10;}
+            if (stageCount == 5) {hardMode = true; colorDifficultyInt = 8; change = 700; m_Length = 10;}
             updateGame();
         }
 
         public void gameOver() {
             m_Playing = false;
-            clearScreen();
             Intent intent = new Intent(getContext(), arrowGameOverActivity.class);
             startActivity(intent);
-        }
-
-        private void clearScreen() {
-            m_Canvas = m_Holder.lockCanvas();
-            m_Canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-            m_Holder.unlockCanvasAndPost(m_Canvas);
         }
 
 //        public boolean isGameOver() {
