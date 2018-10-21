@@ -27,7 +27,8 @@
         <activity android:name=".play4Activity" />
         <activity android:name=".play4_1Activity" />
         <activity android:name=".arrowGameActivity" />
-        <activity android:name=".arrowGameOverActivity"></activity>
+        <activity android:name=".arrowGameOverActivity" />
+        <activity android:name=".snakeGameOverActivity"></activity>
     </application>
 
 </manifest>

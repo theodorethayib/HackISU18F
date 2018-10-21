@@ -49,7 +49,7 @@ public class arrowGameOverActivity extends AppCompatActivity {
                 //start your activity here
             }
 
-        }, 4000L);
+        }, 3000L);
 
 
     }

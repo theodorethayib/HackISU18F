@@ -19,4 +19,8 @@ public class Globals extends Application {
     private boolean hardSwitch;
     public boolean getHardSwitch() {return hardSwitch;}
     public void setHardSwitch(boolean b) {this.hardSwitch = b;}
+
+    private boolean alreadyWatched;
+    public boolean getAlreadyWatched() {return alreadyWatched;}
+    public void setAlreadyWatched(boolean b) {this.alreadyWatched = b;}
 }

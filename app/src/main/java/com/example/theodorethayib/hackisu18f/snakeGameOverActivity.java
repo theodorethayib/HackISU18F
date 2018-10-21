@@ -9,19 +9,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
-public class play3Activity extends AppCompatActivity {
+public class snakeGameOverActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_play3);
-
+        setContentView(R.layout.activity_snake_game_over);
         Button button1 = findViewById(R.id.button1);
         Button button2 = findViewById(R.id.button2);
 
@@ -32,9 +27,9 @@ public class play3Activity extends AppCompatActivity {
         mHandler.postDelayed(new Runnable() {
 
             //        @Override
-            public void run(){
+            public void run() {
                 TextView welcome2 = findViewById(R.id.welcome2);
-                welcome2.setText("Are you ready to play?");
+                welcome2.setText("Would you like to play again?");
                 //start your activity here
             }
 
@@ -44,7 +39,7 @@ public class play3Activity extends AppCompatActivity {
         mHandler.postDelayed(new Runnable() {
 
             //        @Override
-            public void run(){
+            public void run() {
                 Button button1 = findViewById(R.id.button1);
                 Button button2 = findViewById(R.id.button2);
 
@@ -58,13 +53,13 @@ public class play3Activity extends AppCompatActivity {
 
     }
 
-    public void launchPlay3_1Activity(View view) {
+    public void noButton(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
     public void yesButton(View view) {
-        Intent intent = new Intent(this, arrowGameActivity.class);
+        Intent intent = new Intent(this, snakeGameActivity.class);
         startActivity(intent);
     }
 }

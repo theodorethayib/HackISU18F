@@ -12,6 +12,8 @@ public class settingsActivity extends AppCompatActivity {
 
     Globals g = (Globals)getApplication();
 
+    public boolean hModeSwitch;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +43,11 @@ public class settingsActivity extends AppCompatActivity {
         Switch hardSwitch = (Switch) findViewById(R.id.hardSwitch);
         if(hardSwitch.isChecked()){
             g.setHardSwitch(true);
+            hModeSwitch = true;
         }
         else{
             g.setHardSwitch(false);
+            hModeSwitch = false;
         }
 
 

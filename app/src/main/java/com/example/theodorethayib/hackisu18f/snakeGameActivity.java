@@ -1,10 +1,12 @@
 package com.example.theodorethayib.hackisu18f;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
@@ -58,6 +60,7 @@ public class snakeGameActivity extends AppCompatActivity {
         private Canvas m_Canvas;
         private SurfaceHolder m_Holder;
         private Paint m_Paint;
+        private Paint m_PaintFood;
         private Context m_context;
 
 
@@ -67,7 +70,7 @@ public class snakeGameActivity extends AppCompatActivity {
 
 
         private long m_NextFrameTime;
-        private final long FPS = 20;
+        private final long FPS = 10;
 
         private int[] m_SnakeXs;
         private int[] m_SnakeYs;
@@ -99,6 +102,7 @@ public class snakeGameActivity extends AppCompatActivity {
 
             m_Holder = getHolder();
             m_Paint = new Paint();
+            m_PaintFood = new Paint();
 
             m_SnakeXs = new int[200];
             m_SnakeYs = new int[200];
@@ -143,8 +147,8 @@ public class snakeGameActivity extends AppCompatActivity {
 
         public void spawnFood() {
             Random rand = new Random();
-            int tempX = rand.nextInt(NUM_BLOCKS_WIDE - 1) + 1;
-            int tempY = rand.nextInt(m_NumBlocksHigh - 1) + 1;
+            int tempX = rand.nextInt((NUM_BLOCKS_WIDE - 1) + 1);
+            int tempY = rand.nextInt((m_NumBlocksHigh - 1) + 1);
 //        while (m_SnakeXs[0] == tempX && m_SnakeYs[0] == tempY) {
 //            tempX = rand.nextInt(NUM_BLOCKS_WIDE - 1) + 1;
 //            tempY = rand.nextInt(m_NumBlocksHigh - 1) + 1;
@@ -154,9 +158,9 @@ public class snakeGameActivity extends AppCompatActivity {
         }
 
         public void eatFood() {
+            m_Score ++;
             m_SnakeLength ++;
             spawnFood();
-            m_Score ++;
         }
 
         public void moveSnake() {
@@ -182,12 +186,12 @@ public class snakeGameActivity extends AppCompatActivity {
                 dead = true;
             }if(m_SnakeYs[0] == -1) {
                 dead = true;
-            }if(m_SnakeYs[0] >= NUM_BLOCKS_WIDE) {
+            }if(m_SnakeYs[0] >= m_NumBlocksHigh) {
                 dead = true;
             }
 
             for (int i = m_SnakeLength - 1; i > 0; i--) {
-                if ((i > 4) && (m_SnakeXs[0] == m_SnakeXs[i]) && (m_SnakeYs[0] == m_SnakeYs[i])) {
+                if ((i >= 1) && (m_SnakeXs[0] == m_SnakeXs[i]) && (m_SnakeYs[0] == m_SnakeYs[i])) {
                     dead = true;
                 }
             }
@@ -202,8 +206,22 @@ public class snakeGameActivity extends AppCompatActivity {
             moveSnake();
 
             if (detectDeath()) {
+//                gameOver();
                 startGame();
             }
+        }
+
+        public void gameOver() {
+            m_Playing = false;
+            clearScreen();
+            Intent intent = new Intent(getContext(), snakeGameOverActivity.class);
+            startActivity(intent);
+        }
+
+        private void clearScreen() {
+            m_Canvas = m_Holder.lockCanvas();
+            m_Canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+            m_Holder.unlockCanvasAndPost(m_Canvas);
         }
 
         public void drawGame() {
@@ -214,7 +232,8 @@ public class snakeGameActivity extends AppCompatActivity {
 //            m_Canvas.drawColor(444);
 
                 m_Paint.setColor(Color.argb(255, 136, 136, 136));
-//            m_Paint.setColor(888);
+                m_PaintFood.setColor(Color.argb(255, 0, 0, 255));
+
 
                 m_Paint.setTextSize(200);
                 m_Canvas.drawText("Score:" + m_Score, (m_ScreenWidth / 2) - 400, 200, m_Paint);
@@ -230,7 +249,7 @@ public class snakeGameActivity extends AppCompatActivity {
                 m_Canvas.drawRect(m_MouseX * m_BlockSize, m_MouseY * m_BlockSize,
                         (m_MouseX * m_BlockSize) + m_BlockSize,
                         (m_MouseY * m_BlockSize) + m_BlockSize,
-                        m_Paint);
+                        m_PaintFood);
 
                 m_Holder.unlockCanvasAndPost(m_Canvas);
             }

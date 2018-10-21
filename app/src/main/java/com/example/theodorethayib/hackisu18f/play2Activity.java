@@ -34,7 +34,7 @@ public class play2Activity extends AppCompatActivity {
                 //start your activity here
             }
 
-        }, 3000L);
+        }, 2000L);
     }
 
 

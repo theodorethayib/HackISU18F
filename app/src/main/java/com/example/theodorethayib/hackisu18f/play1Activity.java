@@ -39,6 +39,7 @@ public class play1Activity extends AppCompatActivity {
             }
         }
         if (playerNameString.length() > 0) {
+            playerNameString = playerNameString.trim();
             g.setPlayerName(playerNameString);
             startActivity(intent);
         }
