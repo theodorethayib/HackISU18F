@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 public class settingsActivity extends AppCompatActivity {
 
+    Globals g = (Globals)getApplication();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,14 +36,14 @@ public class settingsActivity extends AppCompatActivity {
 
 
     }
-    protected void colorSeperation(View view){
+    protected void hardMode(View view){
         Globals g = (Globals)getApplication();
-        Switch colorSwitch = (Switch) findViewById(R.id.colorSwitch);
-        if(colorSwitch.isChecked()){
-            g.setColorSwitch(true);
+        Switch hardSwitch = (Switch) findViewById(R.id.hardSwitch);
+        if(hardSwitch.isChecked()){
+            g.setHardSwitch(true);
         }
         else{
-            g.setColorSwitch(false);
+            g.setHardSwitch(false);
         }
 
 

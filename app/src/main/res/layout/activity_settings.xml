@@ -12,10 +12,10 @@
         android:orientation="vertical">
 
         <Switch
-            android:id="@+id/colorSwitch"
+            android:id="@+id/hardSwitch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Color Seperation" />
+            android:text="Hard Mode!" />
 
         <CheckBox
             android:id="@+id/checkBox2"
