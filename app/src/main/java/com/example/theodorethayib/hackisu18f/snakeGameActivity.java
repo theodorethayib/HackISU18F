@@ -63,6 +63,10 @@ public class snakeGameActivity extends AppCompatActivity {
         private Paint m_PaintFood;
         private Context m_context;
 
+        private int rColor;
+        private int gColor;
+        private int bColor;
+
 
         private Direction m_Direction = Direction.RIGHT;
 
@@ -140,6 +144,10 @@ public class snakeGameActivity extends AppCompatActivity {
             m_SnakeXs[0] = NUM_BLOCKS_WIDE / 2;
             m_SnakeYs[0] = m_NumBlocksHigh / 2;
 
+            rColor = 100;
+            gColor = 100;
+            bColor = 250;
+
             spawnFood();
             m_Score = 0;
             m_NextFrameTime = System.currentTimeMillis();
@@ -158,6 +166,13 @@ public class snakeGameActivity extends AppCompatActivity {
         }
 
         public void eatFood() {
+            if (gColor <= 220) {
+                gColor += 30;
+                bColor -= 30;
+            } else {
+                gColor -= 30;
+                bColor += 30;
+            }
             m_Score ++;
             m_SnakeLength ++;
             spawnFood();
@@ -206,8 +221,8 @@ public class snakeGameActivity extends AppCompatActivity {
             moveSnake();
 
             if (detectDeath()) {
-//                gameOver();
-                startGame();
+                gameOver();
+//                startGame();
             }
         }
 
@@ -231,8 +246,9 @@ public class snakeGameActivity extends AppCompatActivity {
                 m_Canvas.drawColor(Color.argb(255, 68, 68, 68));
 //            m_Canvas.drawColor(444);
 
-                m_Paint.setColor(Color.argb(255, 136, 136, 136));
-                m_PaintFood.setColor(Color.argb(255, 0, 0, 255));
+//                m_Paint.setColor(Color.argb(255, 156, 156, 156));
+                m_Paint.setColor(Color.argb(255, rColor, gColor, bColor));
+                m_PaintFood.setColor(Color.argb(100, 200, 200, 200));
 
 
                 m_Paint.setTextSize(200);
@@ -269,12 +285,12 @@ public class snakeGameActivity extends AppCompatActivity {
 
             switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
                 case MotionEvent.ACTION_UP:
-                    if (motionEvent.getX() >= m_ScreenWidth * 2 / 3) {
+                    if (motionEvent.getX() >= m_ScreenWidth * 3 / 4) {
                         m_Direction = Direction.RIGHT;
-                    } else if (motionEvent.getX() <= m_ScreenWidth / 3) {
+                    } else if (motionEvent.getX() <= m_ScreenWidth / 4) {
                         m_Direction = Direction.LEFT;
                     } else {
-                        if (motionEvent.getY() > m_ScreenHeight / 2) {
+                        if (motionEvent.getY() > m_ScreenHeight * 2 / 3) {
                             m_Direction = Direction.DOWN;
                         }
                         else {
